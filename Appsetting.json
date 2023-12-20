@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=DESKTOP-JFQUU93;Database=TechShop;Trusted_connection=true"
+  }
+}
