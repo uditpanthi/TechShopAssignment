@@ -6,7 +6,7 @@ using TechShopAssignment.Utility;
 
 namespace TechShopAssignment.DAO
 {
-    public class TechShopDao
+    public class TechShopDao: ITechShopDao
     {
         public string connectionString;
         SqlCommand cmd = null;
@@ -16,6 +16,9 @@ namespace TechShopAssignment.DAO
             connectionString = DBConn.GetConnectionString();
             cmd = new SqlCommand();
         }
+
+
+
 
         public List<Products> GetProducts()
         {
@@ -33,12 +36,12 @@ namespace TechShopAssignment.DAO
                         while (reader.Read())
                         {
                             Products tempProduct = new Products
-                            {
-                                ProductID = Convert.ToInt32(reader["ProductID"]),
-                                ProductName = reader["ProductName"].ToString(),
-                                Description = reader["Description"].ToString(),
-                                Price = Convert.ToDecimal(reader["Price"])
-                            };
+                            (
+                                Convert.ToInt32(reader["ProductID"]),
+                                reader["ProductName"].ToString(),
+                                reader["Description"].ToString(),
+                                Convert.ToDecimal(reader["Price"])
+                            );
                             products.Add(tempProduct);
                         }
                     }
